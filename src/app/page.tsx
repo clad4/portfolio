@@ -1,101 +1,180 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Hero from "../sections/hero";
+import Projects from "../sections/projects";
+import Profile from "../sections/profile";
+import Contact from "../sections/contact";
+import {
+    SiNextdotjs,
+    SiReact,
+    SiTailwindcss,
+    SiTypescript,
+    SiVercel,
+} from "react-icons/si";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function Portfolio() {
+    const [isDark, setIsDark] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+            setIsDark(true);
+            document.documentElement.classList.add("dark");
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        document.querySelectorAll("section[id]").forEach((section) => {
+            observer.observe(section);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const toggleDark = () => {
+        const newDark = !isDark;
+        setIsDark(newDark);
+
+        if (newDark) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        }
+    };
+
+    const NavLinks = () => (
+        <>
+            <a
+                href="#home"
+                className={`text-lg font-medium transition-colors duration-200 hover:text-primary ${
+                    activeSection === "home"
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                }`}
+            >
+                Home
+            </a>
+            <a
+                href="#projects"
+                className={`text-lg font-medium transition-colors duration-200 hover:text-primary ${
+                    activeSection === "projects"
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                }`}
+            >
+                Projects
+            </a>
+            <a
+                href="#profile"
+                className={`text-lg font-medium transition-colors duration-200 hover:text-primary ${
+                    activeSection === "profile"
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                }`}
+            >
+                Profile
+            </a>
+            <a
+                href="#contact"
+                className={`text-lg font-medium transition-colors duration-200 hover:text-primary ${
+                    activeSection === "contact"
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                }`}
+            >
+                Contact
+            </a>
+        </>
+    );
+    const technologies = [
+        { name: "React", icon: SiReact },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+        { name: "Vercel", icon: SiVercel },
+    ];
+
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-background to-muted transition-colors duration-300">
+            <header className="fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
+                <div className="container flex h-16 items-center justify-between">
+                    <nav className="hidden gap-6 md:flex [&>*:hover]:bg-slate-300">
+                        <NavLinks />
+                    </nav>
+                    <Button variant="ghost" size="icon" onClick={toggleDark}>
+                        {isDark ? (
+                            <Sun className="size-5 " />
+                        ) : (
+                            <Moon className="size-5 " />
+                        )}
+                    </Button>
+                </div>
+            </header>
+            <main className="container pb-16 pt-24">
+                <section id="home" className="py-12">
+                    <Hero isDark={isDark} />
+                </section>
+                <section id="projects" className="py-12">
+                    <Projects />
+                </section>
+                <section id="profile" className="py-12">
+                    <Profile />
+                </section>
+                <section id="contact" className="py-12">
+                    <Contact />
+                </section>
+            </main>
+            <footer className="mt-5 bg-accent">
+                <div className="container py-8">
+                    <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+                        <p className="text-sm text-muted-foreground">
+                            © {new Date().getFullYear()} Sovannroth Eang. All
+                            rights reserved.
+                        </p>
+
+                        <div className="flex flex-col items-center gap-4 md:flex-row">
+                            <p className="text-sm text-muted-foreground">
+                                Built with:
+                            </p>
+                            <div className="flex gap-3">
+                                {technologies.map((tech) => {
+                                    const Icon = tech.icon;
+                                    return (
+                                        <div
+                                            key={tech.name}
+                                            className="group relative flex items-center justify-center"
+                                        >
+                                            <Icon className="h-5 w-5 transition-colors group-hover:text-primary" />
+                                            <span className="absolute -top-8 scale-0 rounded bg-slate-800 px-2 py-1 text-xs text-slate-200 transition-transform group-hover:scale-100">
+                                                {tech.name}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
