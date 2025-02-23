@@ -29,16 +29,16 @@ export default function Profile() {
                             Who am I?
                         </p>
                         <h3 className="text-4xl font-bold tracking-tight gradient-text animate-gradient">
-                            I&apos;m John Doe,
+                            I&apos;m Sovannroth Eang,
                         </h3>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Hi, I'm Sovannroth Eang. I'm an undergraduate
-                            computer science student on a journey to become a
-                            proficient full-stack developer. I'm building my
-                            foundation in web technologies, with a current focus
-                            on Next.js and Node.js. I'm a firm believer in
-                            continuous learning and I'm always looking for
-                            opportunities to grow and improve my skills.
+                            An undergraduate computer science student on a
+                            journey to become a proficient full-stack developer.
+                            I'm building my foundation in web technologies, with
+                            a current focus on Next.js and Node.js. I'm a firm
+                            believer in continuous learning and I'm always
+                            looking for opportunities to grow and improve my
+                            skills.
                         </p>
 
                         <div className="grid sm:grid-cols-2 gap-4 mt-8">
