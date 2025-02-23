@@ -24,6 +24,7 @@ export default function Profile() {
                         <Image
                             src="/images/image.png"
                             alt="Profile picture"
+                            sizes="any"
                             fill
                             className="object-cover"
                         />
