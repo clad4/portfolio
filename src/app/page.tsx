@@ -72,17 +72,17 @@ export default function Page() {
                     </Button>
                 </div>
             </header>
-            <main className="container pb-16 pt-24">
-                <section id="home" className="py-12">
-                    <Hero isDark={isDark} />
+            <main className="container">
+                <section id="home" className="py-20 relative">
+                    <Hero />
                 </section>
-                <section id="projects" className="py-12">
+                <section id="projects" className="py-20">
                     <Projects />
                 </section>
-                <section id="profile" className="py-12">
+                <section id="profile" className="py-20">
                     <Profile />
                 </section>
-                <section id="contact" className="py-12">
+                <section id="contact" className="py-20">
                     <Contact />
                 </section>
             </main>

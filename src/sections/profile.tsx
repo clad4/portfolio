@@ -7,13 +7,16 @@ import {
 import Image from "next/image";
 
 import { skills } from "../../data/data";
+import Education from "@/components/Education";
 
 export default function Profile() {
     return (
         <div>
-            <h2 className="mb-8 text-center text-3xl font-bold tracking-tighter sm:text-4xl">
-                About Me
-            </h2>
+            <div className="text-center mb-10 relative">
+                <h2 className="mb-8 marker text-3xl font-bold tracking-tighter sm:text-4xl">
+                    About Me
+                </h2>
+            </div>
             <Card className="mt-12 p-8 bg-background relative">
                 <div className="grid md:grid-cols-[300px_1fr] gap-8 items-start">
                     <div className="relative aspect-[4/5] rounded-lg overflow-hidden ">
@@ -26,20 +29,23 @@ export default function Profile() {
                         />
                     </div>
                     <div className="space-y-4">
-                        <p className="text-secondary-foreground uppercase tracking-wider font-medium">
+                        <p className="text-muted-foreground uppercase tracking-wider font-medium">
                             Who am I?
                         </p>
                         <h3 className=" text-3xl lg:text-4xl font-bold tracking-tight gradient-text animate-gradient">
                             I&apos;m Sovannroth Eang,
                         </h3>
-                        <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
-                            An undergraduate computer science student on a
-                            journey to become a proficient full-stack developer.
-                            I&apos;m building my foundation in web technologies,
-                            with a current focus on Next.js and Node.js.
-                            I&apos;m a firm believer in continuous learning and
-                            I&apos;m always looking for opportunities to grow
-                            and improve my skills.
+                        <p className="text-sm md:text-lg text-secondary-foreground leading-relaxed">
+                            An{" "}
+                            <span className="font-medium">
+                                undergraduate computer science student
+                            </span>{" "}
+                            on a journey to become a proficient full-stack
+                            developer. I&apos;m building my foundation in web
+                            technologies, with a current focus on Next.js and
+                            Node.js. I&apos;m a firm believer in continuous
+                            learning and I&apos;m always looking for
+                            opportunities to grow and improve my skills.
                         </p>
 
                         <div className="grid sm:grid-cols-2 gap-4 mt-8">
@@ -95,6 +101,7 @@ export default function Profile() {
                     })}
                 </div>
             </Card>
+            <Education />
         </div>
     );
 }

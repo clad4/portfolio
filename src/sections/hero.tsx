@@ -1,21 +1,13 @@
 import { Button } from "@/components/ui/button";
 
-interface HeroProps {
-    isDark: boolean;
-}
-
-export default function Hero({ isDark }: HeroProps) {
+export default function Hero() {
     return (
         <div className="flex min-h-[80vh] flex-col items-center justify-center text-center sm:px-8 lg:px-2">
             <h1 className="mb-4 font-bold tracking-tighter text-4xl md:text-6xl lg:text-7xl ">
-                <span
-                    className={`text-3xl md:text-5xl lg:text-6xl ${
-                        isDark ? "text-slate-400" : "text-slate-500"
-                    }`}
-                >
-                    Hi
+                Hi, I&apos;m{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-300">
+                    Sovannroth Eang
                 </span>
-                , I&apos;m <span className="text-primary">Sovannroth Eang</span>
             </h1>
             <p className="my-8 max-w-[650px] text-sm md:text-lg text-muted-foreground sm:text-xl">
                 A passionate full-stack developer specializing in React,

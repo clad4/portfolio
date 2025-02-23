@@ -11,9 +11,11 @@ import { projects } from "../../data/data";
 export default function Projects() {
     return (
         <div>
-            <h2 className="mb-8 text-center text-3xl font-bold tracking-tighter sm:text-4xl">
-                My Projects
-            </h2>
+            <div className="text-center mb-10 relative">
+                <h2 className="  text-3xl font-bold tracking-tighter sm:text-4xl marker">
+                    My Projects
+                </h2>
+            </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {projects.length > 0 ? (
                     projects.map((projects, index) => (

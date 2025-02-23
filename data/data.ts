@@ -1,4 +1,4 @@
-import { Code2, Layout, LucideIcon, Server } from "lucide-react";
+import { Code2, Layout, LucideIcon, Server, School } from "lucide-react";
 import {
     SiNextdotjs,
     SiReact,
@@ -60,4 +60,15 @@ const technologies = [
     { name: "Vercel", icon: SiVercel },
 ];
 
-export { projects, skills, technologies };
+const education = [
+    {
+        school: "Royal University of Phnom Penh",
+        degree: "B.S in Computer Science and Engineering",
+        duration: "2023 - Present",
+        description:
+            "Bachelor of Science in Computer Science and Engineering (2023 - Present). Building expertise in web and application development, essential for full-stack development roles. Developing skills in front-end frameworks like Next.js, back-end technologies like Node.js, and database management.",
+        icon: School,
+    },
+];
+
+export { projects, skills, technologies, education };

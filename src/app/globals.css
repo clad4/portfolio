@@ -6,6 +6,22 @@
     .nav-item {
         @apply px-4 py-1.5 rounded-full text-white/70 text-sm font-semibold hover:bg-white/10 hover:text-white transition-all duration-500;
     }
+    .marker {
+        position: relative;
+        display: inline;
+        width: auto;
+    }
+    .marker:before {
+        content: "";
+        width: 125px;
+        height: 30px;
+        position: absolute;
+        bottom: -60%;
+        right: 20%;
+        transform: translateX(50%);
+        background-image: url("/images/marker.svg");
+        background-repeat: no-repeat;
+    }
     :root {
         --background: 0 0% 100%;
         --foreground: 222.2 84% 4.9%;
@@ -13,14 +29,14 @@
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
 
-        --primary: 0 47.4% 11.2%;
+        --primary: 0 47.4% 6.2%;
         --primary-foreground: 210 40% 98%;
 
         --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
+        --secondary-foreground: 222.2 57.4% 6.2%;
 
         --muted: 210 40% 86.1%;
-        --muted-foreground: 215.4 16.3% 6.9%;
+        --muted-foreground: 215.4 16.3% 56.9%;
 
         --accent: 210 40% 96.1%;
         --accent-foreground: 222.2 47.4% 11.2%;
@@ -31,7 +47,6 @@
 
         --radius: 0.5rem;
     }
-
     .dark {
         --background: 222.2 84% 4.9%;
         --foreground: 210 40% 98%;
