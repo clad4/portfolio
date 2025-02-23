@@ -34,11 +34,11 @@ export default function Profile() {
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             An undergraduate computer science student on a
                             journey to become a proficient full-stack developer.
-                            I'm building my foundation in web technologies, with
-                            a current focus on Next.js and Node.js. I'm a firm
-                            believer in continuous learning and I'm always
-                            looking for opportunities to grow and improve my
-                            skills.
+                            I&apos;m building my foundation in web technologies,
+                            with a current focus on Next.js and Node.js.
+                            I&apos;m a firm believer in continuous learning and
+                            I&apos;m always looking for opportunities to grow
+                            and improve my skills.
                         </p>
 
                         <div className="grid sm:grid-cols-2 gap-4 mt-8">
@@ -95,16 +95,5 @@ export default function Profile() {
                 </div>
             </Card>
         </div>
-        // <div className="animate-in" style={{ animationDelay: "200ms" }}>
-        //     <div className="text-center space-y-3">
-        //         <p className="text-secondary uppercase tracking-wider font-medium">
-        //             About Me
-        //         </p>
-        //         <h2 className="text-4xl md:text-5xl font-bold tracking-tight gradient-text animate-gradient">
-        //             More Details about me
-        //         </h2>
-        //     </div>
-
-        // </div>
     );
 }

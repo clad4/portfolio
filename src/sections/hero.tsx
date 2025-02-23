@@ -7,13 +7,13 @@ interface HeroProps {
 export default function Hero({ isDark }: HeroProps) {
     return (
         <div className="flex min-h-[80vh] flex-col items-center justify-center text-center sm:px-8 lg:px-2">
-            <h1 className="mb-4 text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="mb-4 font-bold tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl ">
                 {isDark ? (
-                    <span className="text-slate-400 sm:text-5xl md:text-6xl lg:text-7xl">
+                    <span className="text-slate-400 sm:text-4xl md:text-5xl lg:text-6xl">
                         Hi
                     </span>
                 ) : (
-                    <span className="text-slate-500 sm:text-5xl md:text-6xl lg:text-7xl">
+                    <span className="text-slate-500 sm:text-4xl md:text-5xl lg:text-6xl">
                         Hi
                     </span>
                 )}
