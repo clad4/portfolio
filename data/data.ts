@@ -1,4 +1,11 @@
 import { Code2, Layout, LucideIcon, Server } from "lucide-react";
+import {
+    SiNextdotjs,
+    SiReact,
+    SiTailwindcss,
+    SiTypescript,
+    SiVercel,
+} from "react-icons/si";
 
 interface Project {
     image: string;
@@ -45,5 +52,12 @@ const skills = [
         icon: Code2,
     },
 ];
+const technologies = [
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "Tailwind CSS", icon: SiTailwindcss },
+    { name: "Vercel", icon: SiVercel },
+];
 
-export { projects, skills };
+export { projects, skills, technologies };

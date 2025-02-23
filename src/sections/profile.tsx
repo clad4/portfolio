@@ -14,9 +14,10 @@ export default function Profile() {
             <h2 className="mb-8 text-center text-3xl font-bold tracking-tighter sm:text-4xl">
                 About Me
             </h2>
-            <Card className="mt-12 p-8 bg-background">
+            <Card className="mt-12 p-8 bg-background relative">
                 <div className="grid md:grid-cols-[300px_1fr] gap-8 items-start">
-                    <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
+                    <div className="relative aspect-[4/5] rounded-lg overflow-hidden ">
+                        <div className="absolute w-full h-full border top-1 left-1"></div>
                         <Image
                             src="/images/image.png"
                             alt="Profile picture"
@@ -28,10 +29,10 @@ export default function Profile() {
                         <p className="text-secondary-foreground uppercase tracking-wider font-medium">
                             Who am I?
                         </p>
-                        <h3 className="text-4xl font-bold tracking-tight gradient-text animate-gradient">
+                        <h3 className=" text-3xl lg:text-4xl font-bold tracking-tight gradient-text animate-gradient">
                             I&apos;m Sovannroth Eang,
                         </h3>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                        <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
                             An undergraduate computer science student on a
                             journey to become a proficient full-stack developer.
                             I&apos;m building my foundation in web technologies,
